@@ -13,14 +13,25 @@ let createGrid = (size) => {
     newdiv.addEventListener("mouseover", () => newdiv.style.backgroundColor="gray");
 }};
 
+let check = (size) => {
+    if (size % 10 != 0 || size < 10 || size > 100) {
+        alert("Number must be 10 > x > 100 and divisible by 10");
+        createGrid(20);
+    }
+    else {
+        createGrid(size);
+    }
+}
+
 
 let size = 20;
 createGrid(size);
 
 
 sbtn.addEventListener("click", () => {
+    size = Number(sizeInput.value);
+    sizeInput.value = "";
     container.innerHTML = "";
-    size = sizeInput.value;
-    createGrid(size);
+    check(size);
 });
 
